@@ -8,3 +8,8 @@ def test_enter_garage():
 def test_available_spots_empty():
     garage = {"capacity": 10, "cars": {}}
     assert get_available_spots(garage) == 10
+
+def test_available_spots_partial():
+    garage = {"capacity": 2, "cars": {"A": 1, "B": 2}}
+    assert get_available_spots(garage) == 0
+
