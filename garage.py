@@ -1,6 +1,9 @@
 def enter_garage(garage, car_id, entry_hour):
     if car_id in garage["cars"]:
         raise ValueError
+
+    if len(garage["cars"]) >= garage["capacity"]:
+        raise ValueError
     garage["cars"][car_id] = entry_hour
 
 
@@ -12,6 +15,7 @@ def get_available_spots(garage):
     if spots <0:
         return 0 
     return spots
+
 
 
 def calculate_fee(hours, rate):
