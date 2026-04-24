@@ -8,7 +8,7 @@ def enter_garage(garage, car_id, entry_hour):
 
 
 def exit_garage(garage, car_id):
-    pass
+    del garage["cars"][car_id]
 
 def get_available_spots(garage):
     spots = garage["capacity"] - len(garage["cars"])
