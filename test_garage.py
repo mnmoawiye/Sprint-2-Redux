@@ -6,6 +6,12 @@ def test_enter_garage():
     enter_garage(garage, "A", 5)
     assert garage["cars"]["A"] == 5
 
+
+def test_enter_full_garage():
+    garage = {"capacity": 1, "cars": {"A": 1}}
+    with pytest.raises(ValueError):
+        enter_garage(garage, "B",2)
+
 def test_enter_same_car_id():
     garage = {"capacity": 2, "cars": {"A": 1}}
     with pytest.raises(ValueError):
@@ -22,4 +28,3 @@ def test_available_spots_full():
 def test_available_spots_partial():
     garage = {"capacity": 3, "cars": {"A": 1}}
     assert get_available_spots(garage) == 2
-
