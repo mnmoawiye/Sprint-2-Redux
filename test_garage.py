@@ -1,5 +1,5 @@
 import pytest
-from garage import enter_garage, get_available_spots, exit_garage
+from garage import enter_garage, get_available_spots, exit_garage, calculate_fee
 
 def test_enter_garage():
     garage = {"capacity": 2, "cars": {}}
@@ -40,3 +40,5 @@ def test_exit_missing_car():
     with pytest.raises (KeyError):
         exit_garage(garage,"A")
 
+def test_fee_basic():
+    assert calculate_fee(2,5) == 10.00
