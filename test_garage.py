@@ -1,5 +1,5 @@
 import pytest
-from garage import enter_garage, get_available_spots
+from garage import enter_garage, get_available_spots, exit_garage
 
 def test_enter_garage():
     garage = {"capacity": 2, "cars": {}}
@@ -28,3 +28,9 @@ def test_available_spots_full():
 def test_available_spots_partial():
     garage = {"capacity": 3, "cars": {"A": 1}}
     assert get_available_spots(garage) == 2
+
+
+def test_exit_removes_car():
+    garage = {"capacity": 2, "cars": {"A": 1}}
+    exit_garage(garage, "A")
+    assert "A" not in garage["cars"]
