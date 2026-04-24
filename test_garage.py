@@ -35,7 +35,8 @@ def test_exit_removes_car():
     exit_garage(garage, "A")
     assert "A" not in garage["cars"]
 
-    def test_exit_missing_car():
-        garage = {"capacity": 2, "cars": {}}
-        with pytest.raises (KeyError):
-            exit_garage(garage,"A")
+def test_exit_missing_car():
+    garage = {"capacity": 2, "cars": {}}
+    with pytest.raises (KeyError):
+        exit_garage(garage,"A")
+
